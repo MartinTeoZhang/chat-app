@@ -1,0 +1,22 @@
+.mainspace-container {
+  width: 100%;
+  height: 90vh;
+}
+
+.out-box {
+  margin-top: 20px;
+  width: 100%;
+  height: 60vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: black dotted 1px;
+  border-radius: 10px;
+}
+
+.search-title {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 40px;
+}

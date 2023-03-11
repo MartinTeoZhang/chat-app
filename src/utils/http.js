@@ -2,23 +2,28 @@
 // 实例化  请求拦截器 响应拦截器
 
 import axios from 'axios'
-import { getToken } from './token'
+import { getToken } from './apikey'
 import { history } from './history'
 const http = axios.create({
-  baseURL: 'http://geek.itheima.net/v1_0',
-  timeout: 5000
+  baseURL: 'https://api.openai.com/v1/chat/completions',
+  timeout: 10000
 })
-// 添加请求拦截器
-http.interceptors.request.use((config) => {
-  // if not login add token
-  const token = getToken()
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-  }
-  return config
-}, (error) => {
-  return Promise.reject(error)
-})
+
+//设置header
+http.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
+
+
+// // 添加请求拦截器
+// http.interceptors.request.use((config) => {
+//   // if not login add token
+//   const token = getToken()
+//   if (token) {
+//     config.headers.Authorization = `Bearer ${token}`
+//   }
+//   return config
+// }, (error) => {
+//   return Promise.reject(error)
+// })
 
 // 添加响应拦截器
 http.interceptors.response.use((response) => {
@@ -31,7 +36,7 @@ http.interceptors.response.use((response) => {
   if (error.response.status === 401) {
     // 跳回到登录 reactRouter默认状态下 并不支持在组件之外完成路由跳转
     // 需要自己来实现
-    history.push('/login')
+    // history.push('/login')
   }
   return Promise.reject(error)
 })

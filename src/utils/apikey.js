@@ -1,21 +1,21 @@
 // 封装ls存取token
 
-const key = 'pc-key'
+const key = 'chat-api-key'
 
-const setToken = (token) => {
+const setApiKey = (token) => {
   return window.localStorage.setItem(key, token)
 }
 
-const getToken = () => {
+const getApiKey = () => {
   return window.localStorage.getItem(key)
 }
 
-const removeToken = () => {
+const removeApiKey = () => {
   return window.localStorage.removeItem(key)
 }
 
 export {
-  setToken,
-  getToken,
-  removeToken
+  setApiKey,
+  getApiKey,
+  removeApiKey
 }

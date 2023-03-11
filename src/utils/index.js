@@ -2,18 +2,18 @@
 // 然后再统一导出
 import { http } from './http'
 import {
-  setToken,
-  getToken,
-  removeToken
-} from './token'
+  setApiKey,
+  getApiKey,
+  removeApiKey
+} from './apikey'
 
 import { history } from './history'
 
 export {
   http,
-  setToken,
-  getToken,
-  removeToken,
+  setApiKey,
+  getApiKey,
+  removeApiKey,
   history
 }
 

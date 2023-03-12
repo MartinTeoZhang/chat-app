@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# 使用指南
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 0.准备工作
 
-## Available Scripts
+在运行仓库前，你需要安装 Node.js 并在 Node.js 中安装 yarn
 
-In the project directory, you can run:
+`npm install -g yarn`
 
-### `npm start`
+## 1.安装步骤
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+(1)下载本仓库到本地
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+(2)用 VSCode 打开根目录,在 Terminal 运行：
 
-### `npm test`
+`yarn`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+来安装所需的所有包
 
-### `npm run build`
+（3）安装完成后，在 Terminal 执行
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`yarn start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+来启动项目
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 2.代码结构说明
 
-### `npm run eject`
+![alt](./1678601065224.jpg)  
+React 使用组件化开发，网页所有的结构都用组件来构造  
+App.js 是页面的主入口，定义了页面的主要结构
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+除导航栏和 footer 以外的主页在`src\page\Home\index.js`中实现  
+Home 的主要区域在 MainSpace 中实现
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`src\components`目录下放置了所有不便被归类的组件，其中包括了`MainSpace`文件夹  
+MainSpace 中的代码可以根据注释理解
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+utils 文件夹存放了所有包装好的工具类  
+包括了向 localstorage 中读写 api key 的`apikey.js`  
+因此我们只需要在第一次使用的时候输入自己的 api key
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`store`文件夹下存储了所有数据/状态操作，包括包装发送给 chatGPT 的请求
 
-## Learn More
+## 3.参考资料
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+React 入门到实战(2022 全网最新）  
+https://www.bilibili.com/video/BV1Z44y1K7Fj  
+对应文档教程  
+https://www.yuque.com/fechaichai/qeamqf/xbai87#HmEWz  
+Ant-Design 组件库  
+https://ant.design/components/spin-cn

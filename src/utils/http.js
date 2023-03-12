@@ -6,7 +6,7 @@ import { getToken } from './apikey'
 import { history } from './history'
 const http = axios.create({
   baseURL: 'https://api.openai.com/v1/chat/completions',
-  timeout: 10000
+  timeout: 50000
 })
 
 //设置header

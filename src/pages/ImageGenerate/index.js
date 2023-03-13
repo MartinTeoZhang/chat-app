@@ -85,7 +85,7 @@ const ImageGenerate = () => {
               <br />
             </Row>
             <Row className='input-hint'>
-              生成方式：
+              Generate method:
             </Row>
             <Row>
               <Select

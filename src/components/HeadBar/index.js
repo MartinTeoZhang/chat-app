@@ -1,15 +1,25 @@
 import { Layout, Col, Row, Breadcrumb, Menu, theme } from 'antd'
+// import { useNavigate } from 'react-router-dom'
 import './index.scss'
-
+import { useState } from 'react'
+import { history } from '../../utils/history'
 const { Header } = Layout
 
 
 
 const HeadBar = () => {
-  const state = {
-    items: [
-      { key: 1, label: '首页' },
-    ]
+  const [current, setCurrent] = useState('html')
+
+  const items = [
+    { key: 'html', label: 'HtmlGenerator', path: '/' },
+    { key: 'image', label: 'ImageGenerator', path: '/image' },
+  ]
+
+
+  const onClick = (e) => {
+    setCurrent(e.key)
+    history.push(items.filter(item => item.key === e.key)[0].path)
+
   }
 
   return (
@@ -19,8 +29,9 @@ const HeadBar = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={state.items}
+          selectedKeys={[current]}
+          items={items}
+          onClick={onClick}
         />
       </Header>
 

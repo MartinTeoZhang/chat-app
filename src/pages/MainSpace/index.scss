@@ -20,6 +20,7 @@
   font-size: 3em;
   font-weight: bold;
   margin-bottom: 40px;
+  color: cornflowerblue;
 }
 
 .input-hint {
@@ -43,4 +44,7 @@
   border: 1px green dotted;
   height: 30vh;
   overflow-y: auto;
+  white-space: pre-line;
+  background-color: black;
+  color: gray;
 }

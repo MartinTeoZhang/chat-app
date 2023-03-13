@@ -1,8 +1,8 @@
 import './index.scss'
 import React, { useState } from 'react'
-import AlertMsg from '../AlertMsg'
+import AlertMsg from '../../components/AlertMsg'
 import { useStore } from '../../store'
-import { Col, Row, Input, message } from 'antd'
+import { Col, Row, Input, Spin } from 'antd'
 import { setApiKey, getApiKey, removeApiKey } from '../../utils'
 const { Search } = Input
 
@@ -16,6 +16,7 @@ const MainSpace = () => {
   const [chatMessage, setChatMessage] = useState('')
   const { chatStore } = useStore()
   const [alertVisible, setAlertVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   // 点击搜索按钮
   const onSearch = async (value) => {
@@ -30,10 +31,13 @@ const MainSpace = () => {
     }
 
     // 包装发送给chatGPT的问题，按照需求填写，最后拼接${value}即来自输入框的内容
-    const packInfo = `You need to help me generate a html page. Notice: your root html node should be a div and I don't need any explaination. My first request is ${value}`
-    await chatStore.getChat({ message: packInfo }).then(res => {
+    const system_msg = "You are a web front-end designer."
+    const packInfo = ` Notice: your root html node should be a div and I don't need any explaination. My first request is ${value}`
+    setLoading(true)
+    await chatStore.getChat({ system_msg: system_msg, user_msg: packInfo }).then(res => {
       // 将返回结果设置chatMessage
-      setChatMessage(res.choices[0].message.content)
+      setChatMessage(res)
+      setLoading(false)
     })
 
   }
@@ -85,12 +89,15 @@ const MainSpace = () => {
               display:
             </Row>
             <Row>
-              <div className='result-area'>
-                {
-                  <div dangerouslySetInnerHTML={{ __html: chatMessage }}>
-                  </div>
-                }
-              </div>
+              <Spin spinning={loading}>
+                <div className='result-area'>
+
+                  {
+                    <div dangerouslySetInnerHTML={{ __html: chatMessage }}>
+                    </div>
+                  }
+                </div>
+              </Spin>
             </Row>
             <Row>
               <br />
@@ -99,10 +106,11 @@ const MainSpace = () => {
               code:
             </Row>
             <Row >
-              <div className='code-area'>
-                {chatMessage}
-              </div>
-
+              <Spin spinning={loading}>
+                <div className='code-area'>
+                  <span>{chatMessage}</span>
+                </div>
+              </Spin>
             </Row>
           </Col>
 

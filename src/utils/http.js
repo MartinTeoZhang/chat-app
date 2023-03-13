@@ -5,7 +5,7 @@ import axios from 'axios'
 import { getToken } from './apikey'
 import { history } from './history'
 const http = axios.create({
-  baseURL: 'https://api.openai.com/v1/chat/completions',
+  baseURL: 'https://api.openai.com/',
   timeout: 50000
 })
 

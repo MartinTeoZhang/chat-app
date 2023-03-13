@@ -1,6 +1,7 @@
 import { configure } from "mobx"
 import React from "react"
 import chatStore from './chat.store'
+import imageStore from "./image.store"
 
 configure({
   enforceActions: "never",
@@ -8,6 +9,7 @@ configure({
 
 class RootStore {
   chatStore = new chatStore()
+  imageStore = new imageStore()
 }
 
 // 实例化根
